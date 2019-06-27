@@ -74,5 +74,6 @@ extension MainTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        self.performSegue(withIdentifier: "showDetailWeather", sender: nil)
     }
 }
