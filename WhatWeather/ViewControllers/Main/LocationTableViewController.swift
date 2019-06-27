@@ -13,17 +13,16 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupTableview()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 3
     }
 
@@ -32,7 +31,6 @@ class MainTableViewController: UITableViewController {
             return UITableViewCell()
         }
         // Configure the cell...
-
         return cell
     }
 
@@ -40,17 +38,11 @@ class MainTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as? HeaderTableViewCell else {
             return UITableViewCell()
         }
-        // Configure the cell...
-
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-    }
-
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 39.0 // TODO Automatic
     }
 
     /*
@@ -63,4 +55,14 @@ class MainTableViewController: UITableViewController {
     }
     */
 
+}
+
+// MARK: Helpers
+
+extension MainTableViewController {
+
+    fileprivate func setupTableview() {
+        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
+        self.tableView.estimatedSectionHeaderHeight = 43
+    }
 }
