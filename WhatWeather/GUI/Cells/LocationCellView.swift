@@ -12,9 +12,9 @@ import UIKit
 
     var nibName = String(describing: LocationCellView.self)
 
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var cityLabel: UILabel!
+    @IBOutlet private weak var countryLabel: UILabel!
+    @IBOutlet private weak var temperatureLabel: UILabel!
 
     @IBInspectable public var cityTitle: String? = nil {
         didSet {
