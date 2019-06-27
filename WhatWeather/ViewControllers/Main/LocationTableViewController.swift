@@ -8,6 +8,17 @@
 
 import UIKit
 
+private enum LocationSection: Int {
+    case featured
+    case recommended
+
+    init?(indexPath: NSIndexPath) {
+        self.init(rawValue: indexPath.section)
+    }
+
+    static var numberOfSections: Int { return 2 }
+}
+
 class MainTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -19,7 +30,7 @@ class MainTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return LocationSection.numberOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,6 +48,13 @@ class MainTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as? HeaderTableViewCell else {
             return UITableViewCell()
+        }
+        guard let section = LocationSection(rawValue: section) else { fatalError("Only 2 sections allowed") }
+        switch section {
+        case .featured:
+            cell.titleHeaderLabel.text = "Featured Location"
+        case .recommended:
+            cell.titleHeaderLabel.text = "Recommended Location"
         }
         return cell
     }
