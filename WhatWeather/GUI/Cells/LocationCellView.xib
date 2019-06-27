@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationCellView" customModule="WhatWeather" customModuleProvider="target">
+            <connections>
+                <outlet property="cityLabel" destination="McR-ar-blE" id="Ry1-e9-0CF"/>
+                <outlet property="countryLabel" destination="g2y-fn-sdK" id="asw-XM-3SA"/>
+                <outlet property="temperatureLabel" destination="Z1q-dF-GAJ" id="Kg7-Ph-KrP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SQo-cp-xs9">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AfterNoon" translatesAutoresizingMaskIntoConstraints="NO" id="kPW-0t-ayz" customClass="UIExtendedImageView" customModule="WhatWeather" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="K1V-tJ-dz6"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-5R-lXf">
+                    <rect key="frame" x="15" y="55" width="384" height="54"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="EVC-gU-7Uw">
+                            <rect key="frame" x="0.0" y="1.5" width="72.5" height="51"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berlin" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McR-ar-blE">
+                                    <rect key="frame" x="0.0" y="0.0" width="72.5" height="25.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Germany" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g2y-fn-sdK">
+                                    <rect key="frame" x="0.0" y="30.5" width="72.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="o2j-Kh-3uT">
+                            <rect key="frame" x="334" y="0.0" width="50" height="54"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1q-dF-GAJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="28" height="54"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPG-P3-Ozj">
+                                    <rect key="frame" x="30" y="0.0" width="20" height="54"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="45"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="yVW-5R-lXf" firstAttribute="leading" secondItem="SQo-cp-xs9" secondAttribute="leading" constant="15" id="2MB-mI-O5H"/>
+                <constraint firstAttribute="trailing" secondItem="kPW-0t-ayz" secondAttribute="trailing" id="3ae-U1-2cE"/>
+                <constraint firstAttribute="trailing" secondItem="yVW-5R-lXf" secondAttribute="trailing" constant="15" id="FjP-Oj-fAm"/>
+                <constraint firstAttribute="bottom" secondItem="kPW-0t-ayz" secondAttribute="bottom" id="LFV-gN-Jyt"/>
+                <constraint firstItem="yVW-5R-lXf" firstAttribute="top" secondItem="SQo-cp-xs9" secondAttribute="top" constant="55" id="OJh-wU-5cj"/>
+                <constraint firstItem="kPW-0t-ayz" firstAttribute="top" secondItem="SQo-cp-xs9" secondAttribute="top" id="Pk8-fK-cst"/>
+                <constraint firstItem="kPW-0t-ayz" firstAttribute="leading" secondItem="SQo-cp-xs9" secondAttribute="leading" id="pLe-7V-9Sj"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="yVW-5R-lXf" secondAttribute="bottom" constant="10" id="sFM-zk-sH0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="266.66666666666669" y="-156.02678571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AfterNoon" width="375" height="667"/>
+    </resources>
+</document>
