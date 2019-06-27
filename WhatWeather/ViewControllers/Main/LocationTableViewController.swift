@@ -24,7 +24,6 @@ class MainTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupTableview()
     }
 
     // MARK: - Table view data source
@@ -73,14 +72,4 @@ class MainTableViewController: UITableViewController {
     }
     */
 
-}
-
-// MARK: Helpers
-
-extension MainTableViewController {
-
-    fileprivate func setupTableview() {
-        self.tableView.sectionHeaderHeight = UITableView.automaticDimension
-        self.tableView.estimatedSectionHeaderHeight = 43
-    }
 }
