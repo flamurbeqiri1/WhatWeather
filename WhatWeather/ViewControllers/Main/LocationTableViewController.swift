@@ -36,6 +36,23 @@ class MainTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as? HeaderTableViewCell else {
+            return UITableViewCell()
+        }
+        // Configure the cell...
+
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 39.0 // TODO Automatic
+    }
+
     /*
     // MARK: - Navigation
 
