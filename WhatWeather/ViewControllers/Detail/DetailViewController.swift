@@ -14,6 +14,9 @@ class DetailViewController: UIViewController, HasDependencies {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var windLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var cityDescriptionLabel: UILabel!
+    @IBOutlet weak var windIconImageView: UIImageView!
 
     // Services
     private lazy var weatherService: WeatherService = dependencies.weatherService()
@@ -30,10 +33,20 @@ class DetailViewController: UIViewController, HasDependencies {
         updateUI()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+            self.windLabel.center.y += 10
+            self.windIconImageView.transform = CGAffineTransform(rotationAngle: 45.0)
+        }, completion: nil)
+    }
+
     fileprivate func updateUI() {
         self.windLabel.text = "\(currentWeather.wind.speed)"
         self.temperatureLabel.text = "\(currentWeather.main.temp)"
         self.backgroundImageView.image = currentWeather.main.temp > 11.0 ? UIImage(named: "Sunny") : UIImage(named: "Rainy")
+        self.cityNameLabel.text = currentWeather.name
+        self.cityDescriptionLabel.text = currentWeather.weather.first?.weatherDescription ?? ""
         self.weatherService.getImage(from: currentWeather) { (result) in
             switch result {
             case .success(let image):
