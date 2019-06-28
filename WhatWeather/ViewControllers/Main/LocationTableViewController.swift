@@ -112,12 +112,19 @@ class MainTableViewController: UITableViewController, HasDependencies {
 
 // MARK: - Navigation
 
-extension MainTableViewController {
+extension MainTableViewController: SegueHandlerType {
 
+    public enum SegueIdentifier: String {
+        case showDetailWeather
+    }
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
+        switch segueIdentifier(for: segue) {
+        case .showDetailWeather:
+            if let destination = segue.destination as? DetailViewController, let weatherDataToSend = sender as? Weather {
+                destination.currentWeather = weatherDataToSend
+            }
+        }
      }
 
 }
@@ -181,8 +188,17 @@ extension MainTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        self.performSegue(withIdentifier: "showDetailWeather", sender: nil)
+        guard let section = LocationSection(rawValue: indexPath.section) else { fatalError("Only 2 sections allowed") }
+        let weatherData: Weather
+        switch section {
+        case .featured:
+            weatherData = featuredCities[indexPath.row]
+        case .recommended:
+            weatherData = recommendedCities[indexPath.row]
+        }
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: .showDetailWeather, sender: weatherData)
+        }
     }
 
     fileprivate func configure(_ cell: LocationTableViewCell, with weatherCityData: Weather) {
