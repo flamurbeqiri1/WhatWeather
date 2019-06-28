@@ -1,5 +1,5 @@
 //
-//  WeatherBackendService.swift
+//  WWBackendService.swift
 //  WhatWeather
 //
 //  Created by Flamur Beqiri on 28/06/2019.
@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class WeatherBackendService: BackendService {
+class WWBackendService: BackendService {
 
     init() {
         #if DEBUG

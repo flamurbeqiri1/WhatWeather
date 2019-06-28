@@ -11,6 +11,7 @@ import Foundation
 // List all services that the app will use
 protocol Dependency {
     func backendService() -> BackendService
+    func weatherService() -> WeatherService
 }
 
 class CoreDependency: Dependency {
@@ -19,6 +20,9 @@ class CoreDependency: Dependency {
         return MockBackendService()
     }
 
+    func weatherService() -> WeatherService {
+        return MockWeatherService()
+    }
 }
 
 /// The singleton dependency container reference

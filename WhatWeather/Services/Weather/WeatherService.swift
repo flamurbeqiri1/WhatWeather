@@ -9,5 +9,5 @@
 import Foundation
 
 protocol WeatherService {
-    func listSeveralCities(completion: @escaping (Result<WeatherResponse>) -> Void)
+    func listSeveralCities(completion: @escaping (Result<[Weather]>) -> Void)
 }
