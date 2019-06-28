@@ -8,6 +8,8 @@ target 'WhatWeather' do
 
   # Pods for WhatWeather
   pod 'SwiftLint'
+  pod 'Alamofire'
+  pod 'Nuke', '~> 7.0'
   target 'WhatWeatherTests' do
     inherit! :search_paths
     # Pods for testing
