@@ -11,22 +11,29 @@ import Foundation
 // MARK: - Weather
 struct WeatherResponse: Codable {
     let cnt: Int
-    let list: [Weather]
+    let list: [Location]
 }
 
 // MARK: - List
-struct Weather: Codable {
+struct Location: Codable {
     let main: Main
     let sys: Sys
     let wind: Wind
     let timeOfData, cityId: Int
     let name: String
+    let weather: [Weather]
 
     enum CodingKeys: String, CodingKey {
-        case main, sys, wind, name
+        case main, sys, wind, name, weather
         case timeOfData = "dt"
         case cityId = "id"
     }
+}
+
+// MARK: - Weather
+struct Weather: Codable {
+    let id: Int
+    let description, icon: String
 }
 
 // MARK: - Main

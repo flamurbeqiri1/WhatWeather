@@ -10,6 +10,8 @@ import Foundation
 
 public let baseUrl = "http://api.openweathermap.org/data/"
 
+public let imageBaseUrl = "http://openweathermap.org/img/wn/"
+
 public let apiKey = "90877ffd7384513983a21e818d09d119"
 
 public let apiVersion = "2.5"

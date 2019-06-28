@@ -6,8 +6,9 @@
 //  Copyright © 2019 Flamur Beqiri. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol WeatherService {
-    func listSeveralCities(completion: @escaping (Result<[Weather]>) -> Void)
+    func listSeveralCities(completion: @escaping (Result<[Location]>) -> Void)
+    func getImage(from location: Location, completion: @escaping (Result<UIImage>) -> Void)
 }

@@ -12,6 +12,7 @@ import Foundation
 protocol Dependency {
     func backendService() -> BackendService
     func weatherService() -> WeatherService
+    func imageLoadingService() -> ImageLoadingService
 }
 
 class CoreDependency: Dependency {
@@ -22,6 +23,10 @@ class CoreDependency: Dependency {
 
     func weatherService() -> WeatherService {
         return MockWeatherService()
+    }
+
+    func imageLoadingService() -> ImageLoadingService {
+        return MockImageLoadingService()
     }
 }
 

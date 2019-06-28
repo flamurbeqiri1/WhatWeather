@@ -17,6 +17,10 @@ class AppDependency: CoreDependency {
 
     // MARK: Weather
     override func weatherService() -> WeatherService {
-        return WWWeatherService(backendService: backendService())
+        return WWWeatherService(backendService: backendService(), imageLoadingService: imageLoadingService())
+    }
+
+    override func imageLoadingService() -> ImageLoadingService {
+        return WWNukeImageLoadingService()
     }
 }

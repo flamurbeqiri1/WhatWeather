@@ -10,11 +10,11 @@ import UIKit
 
 private enum State {
     case loading
-    case populated([Weather])
+    case populated([Location])
     case empty
     case error(Error)
 
-    var currentCities: [Weather] {
+    var currentCities: [Location] {
         switch self {
         case .populated(let cities): return cities
         default: return []
@@ -48,11 +48,11 @@ class MainTableViewController: UITableViewController, HasDependencies {
             tableView.reloadData()
         }
     }
-    private var featuredCities: [Weather] {
+    private var featuredCities: [Location] {
         return state.currentCities.filter { $0.cityId == berlinCityId }
     }
 
-    private var recommendedCities: [Weather] {
+    private var recommendedCities: [Location] {
         return state.currentCities.filter { $0.cityId != berlinCityId }
     }
 
@@ -121,7 +121,7 @@ extension MainTableViewController: SegueHandlerType {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segueIdentifier(for: segue) {
         case .showDetailWeather:
-            if let destination = segue.destination as? DetailViewController, let weatherDataToSend = sender as? Weather {
+            if let destination = segue.destination as? DetailViewController, let weatherDataToSend = sender as? Location {
                 destination.currentWeather = weatherDataToSend
             }
         }
@@ -152,7 +152,7 @@ extension MainTableViewController {
             return UITableViewCell()
         }
         guard let section = LocationSection(rawValue: indexPath.section) else { fatalError("Only 2 sections allowed") }
-        let weatherData: Weather
+        let weatherData: Location
         switch section {
         case .featured:
             weatherData = featuredCities[indexPath.row]
@@ -189,7 +189,7 @@ extension MainTableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let section = LocationSection(rawValue: indexPath.section) else { fatalError("Only 2 sections allowed") }
-        let weatherData: Weather
+        let weatherData: Location
         switch section {
         case .featured:
             weatherData = featuredCities[indexPath.row]
@@ -201,7 +201,7 @@ extension MainTableViewController {
         }
     }
 
-    fileprivate func configure(_ cell: LocationTableViewCell, with weatherCityData: Weather) {
+    fileprivate func configure(_ cell: LocationTableViewCell, with weatherCityData: Location) {
         cell.locationCellView.cityTitle = weatherCityData.name
         cell.locationCellView.countryTitle = weatherCityData.sys.country
         cell.locationCellView.temperature = "\(weatherCityData.main.temp)"
