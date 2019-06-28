@@ -145,18 +145,20 @@ extension MainTableViewController {
             return UITableViewCell()
         }
         guard let section = LocationSection(rawValue: indexPath.section) else { fatalError("Only 2 sections allowed") }
+        let weatherData: Weather
         switch section {
         case .featured:
-            break // TODO
+            weatherData = featuredCities[indexPath.row]
         case .recommended:
-            break // TODO
+            weatherData = recommendedCities[indexPath.row]
         }
+        configure(cell, with: weatherData)
         return cell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as? HeaderTableViewCell else {
-            return nil
+            return UITableViewCell()
         }
         guard let section = LocationSection(rawValue: section) else { fatalError("Only 2 sections allowed") }
         switch section {
@@ -181,5 +183,11 @@ extension MainTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         self.performSegue(withIdentifier: "showDetailWeather", sender: nil)
+    }
+
+    fileprivate func configure(_ cell: LocationTableViewCell, with weatherCityData: Weather) {
+        cell.locationCellView.cityTitle = weatherCityData.name
+        cell.locationCellView.countryTitle = weatherCityData.sys.country
+        cell.locationCellView.temperature = "\(weatherCityData.main.temp)"
     }
 }

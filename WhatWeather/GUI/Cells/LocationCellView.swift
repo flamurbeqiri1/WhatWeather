@@ -48,10 +48,10 @@ import UIKit
         }
     }
 
-    @IBInspectable public var temperatureTitle: String? = nil {
+    @IBInspectable public var temperature: String? = nil {
         didSet {
-            temperatureLabel?.text = temperatureTitle
-            temperatureLabel?.isHidden = temperatureTitle?.isEmpty ?? true
+            temperatureLabel?.text = temperature
+            temperatureLabel?.isHidden = temperature?.isEmpty ?? true
         }
     }
 
@@ -84,7 +84,7 @@ import UIKit
         cityLabel?.isHidden = cityTitle?.isEmpty ?? true
         countryLabel.text = countryTitle
         countryLabel?.isHidden = countryTitle?.isEmpty ?? true
-        temperatureLabel.text = temperatureTitle
-        temperatureLabel?.isHidden = temperatureTitle?.isEmpty ?? true
+        temperatureLabel.text = temperature
+        temperatureLabel?.isHidden = temperature?.isEmpty ?? true
     }
 }
