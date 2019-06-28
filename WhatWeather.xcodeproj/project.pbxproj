@@ -19,6 +19,9 @@
 		0117C52422C6545A00CBB080 /* WWWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52322C6545A00CBB080 /* WWWeatherService.swift */; };
 		0117C52622C654FE00CBB080 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52522C654FE00CBB080 /* Constants.swift */; };
 		0117C52822C659B500CBB080 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52722C659B500CBB080 /* AppDependency.swift */; };
+		0117C52B22C68DA100CBB080 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52A22C68DA100CBB080 /* ImageLoadingService.swift */; };
+		0117C52D22C68DDA00CBB080 /* MockImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52C22C68DDA00CBB080 /* MockImageLoadingService.swift */; };
+		0117C52F22C68F2A00CBB080 /* WWNukeImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0117C52E22C68F2A00CBB080 /* WWNukeImageLoadingService.swift */; };
 		01989B3522C53BD3001CE523 /* LocationCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01989B3422C53BD3001CE523 /* LocationCellView.xib */; };
 		01989B3922C53FE4001CE523 /* LocationCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01989B3822C53FE4001CE523 /* LocationCellView.swift */; };
 		01989B3C22C54043001CE523 /* XibControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01989B3B22C54043001CE523 /* XibControl.swift */; };
@@ -73,6 +76,9 @@
 		0117C52322C6545A00CBB080 /* WWWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWWeatherService.swift; sourceTree = "<group>"; };
 		0117C52522C654FE00CBB080 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0117C52722C659B500CBB080 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		0117C52A22C68DA100CBB080 /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
+		0117C52C22C68DDA00CBB080 /* MockImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageLoadingService.swift; sourceTree = "<group>"; };
+		0117C52E22C68F2A00CBB080 /* WWNukeImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WWNukeImageLoadingService.swift; sourceTree = "<group>"; };
 		01989B3422C53BD3001CE523 /* LocationCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCellView.xib; sourceTree = "<group>"; };
 		01989B3822C53FE4001CE523 /* LocationCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCellView.swift; sourceTree = "<group>"; };
 		01989B3B22C54043001CE523 /* XibControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibControl.swift; sourceTree = "<group>"; };
@@ -222,6 +228,16 @@
 			path = Weather;
 			sourceTree = "<group>";
 		};
+		0117C52922C68D7D00CBB080 /* Image Service */ = {
+			isa = PBXGroup;
+			children = (
+				0117C52A22C68DA100CBB080 /* ImageLoadingService.swift */,
+				0117C52C22C68DDA00CBB080 /* MockImageLoadingService.swift */,
+				0117C52E22C68F2A00CBB080 /* WWNukeImageLoadingService.swift */,
+			);
+			path = "Image Service";
+			sourceTree = "<group>";
+		};
 		01989B3222C53B91001CE523 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +303,7 @@
 			children = (
 				01989B4E22C637FA001CE523 /* Dependency Injection */,
 				01989B5122C63A58001CE523 /* Backend */,
+				0117C52922C68D7D00CBB080 /* Image Service */,
 				0117C51C22C64F7600CBB080 /* Weather */,
 			);
 			path = Services;
@@ -590,16 +607,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				01989B4622C54FAE001CE523 /* LocationTableViewCell.swift in Sources */,
+				0117C52F22C68F2A00CBB080 /* WWNukeImageLoadingService.swift in Sources */,
 				0117C52022C651A400CBB080 /* WeatherResponse.swift in Sources */,
 				01989B5A22C63BA5001CE523 /* WWBackendService.swift in Sources */,
 				0102E6A222C4FDDD00006686 /* AppDelegate.swift in Sources */,
 				01989B4122C54C27001CE523 /* UIExtendedImageView.swift in Sources */,
 				0117C52822C659B500CBB080 /* AppDependency.swift in Sources */,
+				0117C52B22C68DA100CBB080 /* ImageLoadingService.swift in Sources */,
 				01989B5022C6380B001CE523 /* Dependency.swift in Sources */,
 				01989B5322C63A6D001CE523 /* BackendService.swift in Sources */,
 				01989B4922C55253001CE523 /* HeaderTableViewCell.swift in Sources */,
 				01989B3922C53FE4001CE523 /* LocationCellView.swift in Sources */,
 				01989B4322C54CD9001CE523 /* LocationTableViewController.swift in Sources */,
+				0117C52D22C68DDA00CBB080 /* MockImageLoadingService.swift in Sources */,
 				0117C51E22C64F9400CBB080 /* WeatherService.swift in Sources */,
 				01989B3C22C54043001CE523 /* XibControl.swift in Sources */,
 				01989B4C22C56AD9001CE523 /* DetailViewController.swift in Sources */,
