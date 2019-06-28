@@ -41,7 +41,7 @@ class WWBackendService: BackendService {
                     } catch let error {
                         #if DEBUG
                         if let decodingError = error as? DecodingError {
-                            print("JSON decoding error: \(String(describing: decodingError))")
+                            print("DEBUG: JSON decoding error \(String(describing: decodingError))")
                         }
                         #endif
                         completion(Result.failure(error))
