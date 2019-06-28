@@ -56,18 +56,19 @@
                                             <rect key="frame" x="20" y="11" width="375" height="118"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="cityTitle" value="Berlin"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="cityTitle" value="Frankfurt am main Frankfurt am main"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="cityTitleColor">
                                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="countryTitle" value="Germany"/>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="temperatureTitle" value="5"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="countryTitle" value="DE"/>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="temperatureTitleColor">
                                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="countryTitleColor">
                                                     <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="temperature" value="5"/>
+                                                <userDefinedRuntimeAttribute type="image" keyPath="backgroundImage" value="AfterNoon"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                     </subviews>
@@ -182,7 +183,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Night" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-9h-md4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-9h-md4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MIh-xq-bZX">
@@ -294,7 +295,7 @@
     </scenes>
     <resources>
         <image name="AfterNoon" width="375" height="667"/>
-        <image name="Night" width="375" height="667"/>
+        <image name="Sunny" width="414" height="736"/>
         <image name="emptyWeather" width="512" height="512"/>
     </resources>
 </document>

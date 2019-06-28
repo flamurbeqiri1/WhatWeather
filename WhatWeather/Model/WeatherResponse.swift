@@ -18,13 +18,12 @@ struct WeatherResponse: Codable {
 struct Weather: Codable {
     let main: Main
     let sys: Sys
-    let visibility: Int
     let wind: Wind
     let timeOfData, cityId: Int
     let name: String
 
     enum CodingKeys: String, CodingKey {
-        case main, sys, visibility, wind, name
+        case main, sys, wind, name
         case timeOfData = "dt"
         case cityId = "id"
     }
@@ -33,7 +32,8 @@ struct Weather: Codable {
 // MARK: - Main
 struct Main: Codable {
     let temp, tempMin, tempMax: Double
-    let pressure, humidity: Int
+    let pressure: Double
+    let humidity: Int
 
     enum CodingKeys: String, CodingKey {
         case temp, pressure, humidity
@@ -50,5 +50,5 @@ struct Sys: Codable {
 // MARK: - Wind
 struct Wind: Codable {
     let speed: Double
-    let deg: Int
+    let deg: Double
 }

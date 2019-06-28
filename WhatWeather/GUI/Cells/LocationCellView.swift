@@ -15,6 +15,7 @@ import UIKit
     @IBOutlet private weak var cityLabel: UILabel!
     @IBOutlet private weak var countryLabel: UILabel!
     @IBOutlet private weak var temperatureLabel: UILabel!
+    @IBOutlet private weak var backgroundImageView: UIImageView!
 
     @IBInspectable public var cityTitle: String? = nil {
         didSet {
@@ -64,6 +65,12 @@ import UIKit
         }
     }
 
+    @IBInspectable public var backgroundImage: UIImage? = nil {
+        didSet {
+            backgroundImageView?.image = backgroundImage
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame, nibName: nibName)
         setupView()
@@ -86,5 +93,6 @@ import UIKit
         countryLabel?.isHidden = countryTitle?.isEmpty ?? true
         temperatureLabel.text = temperature
         temperatureLabel?.isHidden = temperature?.isEmpty ?? true
+        backgroundImageView.image = backgroundImage
     }
 }

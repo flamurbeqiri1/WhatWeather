@@ -189,5 +189,6 @@ extension MainTableViewController {
         cell.locationCellView.cityTitle = weatherCityData.name
         cell.locationCellView.countryTitle = weatherCityData.sys.country
         cell.locationCellView.temperature = "\(weatherCityData.main.temp)"
+        cell.locationCellView.backgroundImage = weatherCityData.main.temp > 11.0 ? UIImage(named: "Sunny") : UIImage(named: "Rainy")
     }
 }
