@@ -28,8 +28,6 @@ class DetailViewController: UIViewController, HasDependencies {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        // little hack to allow the swiping
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
         updateUI()
     }
 
@@ -57,8 +55,11 @@ class DetailViewController: UIViewController, HasDependencies {
         }
     }
 
-    @IBAction func backButtonAction(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func shareButtonAction(_ sender: Any) {
+        // TODO: - a better content to share
+        let shareAlert = UIActivityViewController(
+            activityItems: [self.windLabel.text!, self.weatherImageView.image!],
+            applicationActivities: [])
+        present(shareAlert, animated: true)
     }
-
 }

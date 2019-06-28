@@ -15,7 +15,7 @@
             <objects>
                 <tableViewController id="Kxz-Xs-J99" customClass="MainTableViewController" customModule="WhatWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="43" sectionFooterHeight="28" id="gTR-1C-aM2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -175,19 +175,19 @@
             </objects>
             <point key="canvasLocation" x="1362.3188405797102" y="33.482142857142854"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Title-->
         <scene sceneID="3WI-Ru-VX3">
             <objects>
                 <viewController id="ucT-YU-QrU" customClass="DetailViewController" customModule="WhatWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XlI-6A-174">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunny" translatesAutoresizingMaskIntoConstraints="NO" id="g4r-9h-md4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YdI-bD-fAm">
-                                <rect key="frame" x="20" y="240" width="374" height="156"/>
+                                <rect key="frame" x="20" y="180" width="374" height="156"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Frankfurt am main" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-E8-xMD">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
@@ -222,22 +222,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxa-fh-6EL">
-                                <rect key="frame" x="10" y="54" width="44" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="bii-FA-C88"/>
-                                    <constraint firstAttribute="height" constant="36" id="reH-ah-0PM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonAction:" destination="ucT-YU-QrU" eventType="touchUpInside" id="Htj-1q-JXd"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YlZ-ha-Qkr">
-                                <rect key="frame" x="20" y="130" width="374" height="100"/>
+                                <rect key="frame" x="20" y="40" width="374" height="100"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyWeather" translatesAutoresizingMaskIntoConstraints="NO" id="rFE-eA-50y">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -270,21 +256,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="YlZ-ha-Qkr" firstAttribute="top" secondItem="Exc-7n-sge" secondAttribute="top" constant="40" id="0qT-hq-uJN"/>
                             <constraint firstItem="YlZ-ha-Qkr" firstAttribute="leading" secondItem="Exc-7n-sge" secondAttribute="leading" constant="20" id="3eJ-ir-tbW"/>
                             <constraint firstAttribute="bottom" secondItem="g4r-9h-md4" secondAttribute="bottom" id="8MU-Bk-cdo"/>
-                            <constraint firstItem="YdI-bD-fAm" firstAttribute="top" secondItem="YlZ-ha-Qkr" secondAttribute="bottom" constant="10" id="Gch-u1-vp2"/>
+                            <constraint firstItem="YdI-bD-fAm" firstAttribute="top" secondItem="YlZ-ha-Qkr" secondAttribute="bottom" constant="40" id="Gch-u1-vp2"/>
                             <constraint firstItem="Exc-7n-sge" firstAttribute="trailing" secondItem="YlZ-ha-Qkr" secondAttribute="trailing" constant="20" id="L5A-1x-E1j"/>
                             <constraint firstItem="YdI-bD-fAm" firstAttribute="trailing" secondItem="YlZ-ha-Qkr" secondAttribute="trailing" id="QG5-pM-Hfh"/>
                             <constraint firstItem="YdI-bD-fAm" firstAttribute="leading" secondItem="YlZ-ha-Qkr" secondAttribute="leading" id="Wcd-EB-lp6"/>
                             <constraint firstAttribute="trailing" secondItem="g4r-9h-md4" secondAttribute="trailing" id="YMU-0q-ljD"/>
-                            <constraint firstItem="YlZ-ha-Qkr" firstAttribute="top" secondItem="wxa-fh-6EL" secondAttribute="bottom" constant="40" id="kSx-w6-JUO"/>
-                            <constraint firstItem="wxa-fh-6EL" firstAttribute="top" secondItem="Exc-7n-sge" secondAttribute="top" constant="10" id="lgt-Aj-In4"/>
                             <constraint firstItem="g4r-9h-md4" firstAttribute="top" secondItem="XlI-6A-174" secondAttribute="top" id="m9X-R1-y2S"/>
-                            <constraint firstItem="wxa-fh-6EL" firstAttribute="leading" secondItem="Exc-7n-sge" secondAttribute="leading" constant="10" id="oje-d1-7j2"/>
                             <constraint firstItem="g4r-9h-md4" firstAttribute="leading" secondItem="XlI-6A-174" secondAttribute="leading" id="qYI-Sn-RAC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Exc-7n-sge"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="YCL-3j-tYj">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="A2q-de-LdD">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7RH-tv-d1s">
+                                <rect key="frame" x="324" y="6" width="70" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="shareIcon"/>
+                                <connections>
+                                    <action selector="shareButtonAction:" destination="ucT-YU-QrU" eventType="touchUpInside" id="FEh-u7-kR0"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="g4r-9h-md4" id="Okh-4Q-tuP"/>
                         <outlet property="cityDescriptionLabel" destination="zoV-r7-Bcz" id="32e-Pt-ePr"/>
@@ -302,9 +299,10 @@
         <!--Navigation Controller-->
         <scene sceneID="sf8-hu-Wkd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="rlo-M6-OkK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rlo-M6-OkK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ZFO-Lq-7ct">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -321,6 +319,7 @@
         <image name="AfterNoon" width="375" height="667"/>
         <image name="Sunny" width="414" height="736"/>
         <image name="emptyWeather" width="512" height="512"/>
+        <image name="shareIcon" width="32" height="32"/>
         <image name="windIco" width="512" height="512"/>
     </resources>
 </document>
