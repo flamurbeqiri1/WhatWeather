@@ -18,3 +18,5 @@ public let apiVersion = "2.5"
 /// For temperature in Celsius use units=metric
 /// Temperature in Kelvin is used by default, no need to use units parameter in API call
 public let units = "metric"
+
+public let berlinCityId = 2950159
