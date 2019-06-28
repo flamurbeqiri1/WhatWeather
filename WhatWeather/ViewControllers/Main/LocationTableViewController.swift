@@ -8,6 +8,20 @@
 
 import UIKit
 
+private enum State {
+    case loading
+    case populated([Weather])
+    case empty
+    case error(Error)
+
+    var currentCities: [Weather] {
+        switch self {
+        case .populated(let cities): return cities
+        default: return []
+        }
+    }
+}
+
 private enum LocationSection: Int {
     case featured
     case recommended
@@ -19,11 +33,79 @@ private enum LocationSection: Int {
     static var numberOfSections: Int { return 2 }
 }
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, HasDependencies {
+
+    @IBOutlet private weak var emptyView: UIView!
+    @IBOutlet private weak var errorView: UIView!
+    @IBOutlet private weak var errorLabel: UILabel!
+
+    // Services
+    private lazy var weatherService: WeatherService = dependencies.weatherService()
+
+    private var state = State.loading {
+        didSet {
+            setFooterView()
+            tableView.reloadData()
+        }
+    }
+    private var featuredCities: [Weather] {
+        return state.currentCities.filter { $0.cityId == berlinCityId }
+    }
+
+    private var recommendedCities: [Weather] {
+        return state.currentCities.filter { $0.cityId != berlinCityId }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        listSeveralCities()
+    }
 
+    private func setupUI() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Refreshing...")
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        self.refreshControl = refreshControl
+    }
+
+    private func setFooterView() {
+        switch state {
+        case .error(let error):
+            errorLabel.text = error.localizedDescription
+            tableView.tableFooterView = errorView
+        case .loading:
+            tableView.tableFooterView = UIView()
+        case .empty:
+            tableView.tableFooterView = emptyView
+        case .populated:
+            tableView.tableFooterView = UIView()
+        }
+    }
+
+    private func listSeveralCities() {
+        refreshControl?.beginRefreshing()
+        state = .loading
+        self.weatherService.listSeveralCities { [weak self] result in
+            guard let `self` = self else { return }
+            self.refreshControl?.endRefreshing()
+            switch result {
+            case .success(let cities):
+                guard !cities.isEmpty else {
+                    self.state = .empty
+                    return
+                }
+                var allCities = self.state.currentCities
+                allCities.append(contentsOf: cities)
+                self.state = .populated(allCities)
+            case .failure(let error):
+                self.state = .error(error)
+            }
+        }
+    }
+
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        listSeveralCities()
     }
 
 }
@@ -49,20 +131,32 @@ extension MainTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        guard let section = LocationSection(rawValue: section) else { fatalError("Only 2 sections allowed") }
+        switch section {
+        case .featured:
+            return featuredCities.count
+        case .recommended:
+            return recommendedCities.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell", for: indexPath) as? LocationTableViewCell else {
             return UITableViewCell()
         }
-        // Configure the cell...
+        guard let section = LocationSection(rawValue: indexPath.section) else { fatalError("Only 2 sections allowed") }
+        switch section {
+        case .featured:
+            break // TODO
+        case .recommended:
+            break // TODO
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell") as? HeaderTableViewCell else {
-            return UITableViewCell()
+            return nil
         }
         guard let section = LocationSection(rawValue: section) else { fatalError("Only 2 sections allowed") }
         switch section {
@@ -72,6 +166,16 @@ extension MainTableViewController {
             cell.titleHeaderLabel.text = "Recommended Location"
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard let section = LocationSection(rawValue: section) else { fatalError("Only 2 sections allowed") }
+        switch section {
+        case .featured:
+            return featuredCities.count == 0 ? 0.1 : tableView.sectionHeaderHeight
+        case .recommended:
+            return recommendedCities.count == 0 ? 0.1 : tableView.sectionHeaderHeight
+        }
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

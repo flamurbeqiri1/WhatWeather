@@ -90,10 +90,87 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="pol-XR-I37"/>
                     <connections>
+                        <outlet property="emptyView" destination="hDm-zU-DYv" id="NSY-YU-DgY"/>
+                        <outlet property="errorLabel" destination="hFn-1m-JcD" id="EdY-0e-Iak"/>
+                        <outlet property="errorView" destination="Tfw-E8-iFh" id="dLw-Ee-Mt9"/>
                         <segue destination="ucT-YU-QrU" kind="show" identifier="showDetailWeather" id="XPe-c8-KFR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqg-gg-sIl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="hDm-zU-DYv" userLabel="Empty View">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="554"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="oa2-hh-onb">
+                            <rect key="frame" x="26.5" y="61.5" width="282" height="298.5"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyWeather" translatesAutoresizingMaskIntoConstraints="NO" id="WUS-1W-Skr">
+                                    <rect key="frame" x="41" y="0.0" width="200" height="200"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="FT4-ba-w5l"/>
+                                        <constraint firstAttribute="width" secondItem="WUS-1W-Skr" secondAttribute="height" multiplier="1:1" id="iKh-nZ-pui"/>
+                                    </constraints>
+                                </imageView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="l8d-GD-ooK">
+                                    <rect key="frame" x="0.0" y="241" width="282" height="57.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdY-Eq-nfO">
+                                            <rect key="frame" x="64.5" y="0.0" width="153" height="23.5"/>
+                                            <attributedString key="attributedText">
+                                                <fragment content="No Weather Data">
+                                                    <attributes>
+                                                        <font key="NSFont" size="20" name="Roboto-Medium"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t seem to have any weather data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j93-7B-OC8">
+                                            <rect key="frame" x="0.0" y="39.5" width="282" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Xe9-xf-Ktm" firstAttribute="bottom" secondItem="oa2-hh-onb" secondAttribute="bottom" constant="160" id="9WR-7f-Tl1"/>
+                        <constraint firstItem="oa2-hh-onb" firstAttribute="centerX" secondItem="hDm-zU-DYv" secondAttribute="centerX" id="pYt-l9-iAH"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Xe9-xf-Ktm"/>
+                </view>
+                <view contentMode="scaleToFill" id="Tfw-E8-iFh" userLabel="Error View">
+                    <rect key="frame" x="0.0" y="0.0" width="335" height="554"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oops!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sja-yH-fdQ">
+                            <rect key="frame" x="136" y="246" width="63" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-1m-JcD">
+                            <rect key="frame" x="126" y="279" width="83.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="hFn-1m-JcD" firstAttribute="top" secondItem="Tfw-E8-iFh" secondAttribute="centerY" constant="2" id="F1O-5O-r6Z"/>
+                        <constraint firstItem="hFn-1m-JcD" firstAttribute="centerX" secondItem="Tfw-E8-iFh" secondAttribute="centerX" id="O1b-Lb-M1u"/>
+                        <constraint firstItem="hFn-1m-JcD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Tfw-E8-iFh" secondAttribute="leading" constant="20" id="YZR-Aw-wyd"/>
+                        <constraint firstItem="sja-yH-fdQ" firstAttribute="centerX" secondItem="Tfw-E8-iFh" secondAttribute="centerX" id="qLc-BN-Idw"/>
+                        <constraint firstItem="sja-yH-fdQ" firstAttribute="bottom" secondItem="Tfw-E8-iFh" secondAttribute="centerY" constant="-2" id="z2m-Ad-UpM"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="80D-Cz-DJ3"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1362.3188405797102" y="33.482142857142854"/>
         </scene>
@@ -177,7 +254,8 @@
                             <constraint firstItem="MIh-xq-bZX" firstAttribute="leading" secondItem="Exc-7n-sge" secondAttribute="leading" constant="15" id="3Br-co-3Rr"/>
                             <constraint firstAttribute="bottom" secondItem="g4r-9h-md4" secondAttribute="bottom" id="8MU-Bk-cdo"/>
                             <constraint firstItem="Exc-7n-sge" firstAttribute="trailing" secondItem="MIh-xq-bZX" secondAttribute="trailing" constant="15" id="FNt-ue-s7V"/>
-                            <constraint firstItem="wxa-fh-6EL" firstAttribute="leading" secondItem="Exc-7n-sge" secondAttribute="leading" constant="10" id="QsL-my-jef"/>
+                            <constraint firstItem="wxa-fh-6EL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Exc-7n-sge" secondAttribute="leading" id="QsL-my-jef"/>
+                            <constraint firstItem="Exc-7n-sge" firstAttribute="trailing" secondItem="wxa-fh-6EL" secondAttribute="trailing" constant="360" id="R48-cM-CMZ"/>
                             <constraint firstAttribute="trailing" secondItem="g4r-9h-md4" secondAttribute="trailing" id="YMU-0q-ljD"/>
                             <constraint firstItem="wxa-fh-6EL" firstAttribute="top" secondItem="Exc-7n-sge" secondAttribute="top" constant="10" id="lgt-Aj-In4"/>
                             <constraint firstItem="g4r-9h-md4" firstAttribute="top" secondItem="XlI-6A-174" secondAttribute="top" id="m9X-R1-y2S"/>
@@ -217,5 +295,6 @@
     <resources>
         <image name="AfterNoon" width="375" height="667"/>
         <image name="Night" width="375" height="667"/>
+        <image name="emptyWeather" width="512" height="512"/>
     </resources>
 </document>
