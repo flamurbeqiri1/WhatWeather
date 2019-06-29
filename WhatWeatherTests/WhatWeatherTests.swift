@@ -21,6 +21,7 @@ class WhatWeatherTests: XCTestCase, HasDependencies {
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        DependencyInjector.dependencies = AppDependency()
     }
 
     func testExample() {
@@ -45,7 +46,7 @@ class WhatWeatherTests: XCTestCase, HasDependencies {
                 XCTAssertNotNil(returnedObject)
                 payloadExpectation.fulfill()
             case .failure(let error):
-                XCTFail(error.localizedDescription)
+                XCTAssert(false, error.localizedDescription)
             }
         }
         waitForExpectations(timeout: 5, handler: nil)
@@ -72,7 +73,7 @@ class WhatWeatherTests: XCTestCase, HasDependencies {
                 XCTAssertNotNil(image)
                 payloadExpectation.fulfill()
             case .failure(let error):
-                XCTFail(error.localizedDescription)
+                XCTAssert(false, error.localizedDescription)
             }
         }
         waitForExpectations(timeout: 10, handler: nil)
