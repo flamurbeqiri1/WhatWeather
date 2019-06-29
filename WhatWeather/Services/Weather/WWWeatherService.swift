@@ -13,7 +13,7 @@ class WWWeatherService: WeatherService {
     private let backendService: BackendService
     private let imageLoadingService: ImageLoadingService
 
-    let citiesUrl = "\(baseUrl)\(apiVersion)/group?id=2950159,2867714,2925533,2629691&units=\(units)&appid=\(apiKey)"
+    let citiesUrl = "\(baseUrl)\(apiVersion)/group?id=2950159,2867714,2925533,2629691,3184136&units=\(units)&appid=\(apiKey)"
 
     init(backendService: BackendService, imageLoadingService: ImageLoadingService) {
         #if DEBUG
