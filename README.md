@@ -1,6 +1,12 @@
 # WhatWeather
 WhatWeather - iOS Weather app built in MVC and Dependency Injection. Some Unit tests included.
 
+##### How to run the example?
+- Clone this repo
+- Open shell window and navigate to project folder
+- Run `pod install`
+- Open `WhatWeather.xcworkspace` and run the project on selected device or simulator
+
 Services are listed below:
   - **Backend Service** - that uses Alamofire library for network communication
   - **Image Service** - getting and caching images using Nuke Library
