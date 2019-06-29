@@ -1,10 +1,17 @@
 # WhatWeather
-WhatWeather - iOS Weather app built in MVC and Dependency Injection.
+WhatWeather - iOS Weather app built in MVC and Dependency Injection. Some Unit tests included.
 
 Services are listed below:
   - **Backend Service** - that uses Alamofire library for network communication
   - **Image Service** - getting and caching images using Nuke Library
   - **Weather service** - that use both above services to list cities and returning images.
+  
+# APP Features!
+  - Listing some cities
+  - Pull to refresh
+  - Detail info
+  - Sharing
+  - Animations
 
 Using Seguhandler in view controllers:
   - 1) Have view controller conform to SegueHandlerType
