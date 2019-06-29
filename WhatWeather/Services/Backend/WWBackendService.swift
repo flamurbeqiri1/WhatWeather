@@ -13,13 +13,13 @@ class WWBackendService: BackendService {
 
     init() {
         #if DEBUG
-        print("DEBUG: Start WeatherBackendService")
+        print("DEBUG: Start WWBackendService")
         #endif
     }
 
     deinit {
         #if DEBUG
-        print("DEBUG: Stop WeatherBackendService")
+        print("DEBUG: Stop WWBackendService")
         #endif
     }
 
