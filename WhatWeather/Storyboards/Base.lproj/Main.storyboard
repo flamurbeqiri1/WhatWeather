@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Table View Controller-->
+        <!--WhatWeather-->
         <scene sceneID="ZL4-uf-JXS">
             <objects>
                 <tableViewController id="Kxz-Xs-J99" customClass="MainTableViewController" customModule="WhatWeather" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                             <outlet property="delegate" destination="Kxz-Xs-J99" id="Vkj-n1-bxW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pol-XR-I37"/>
+                    <navigationItem key="navigationItem" title="WhatWeather" id="pol-XR-I37"/>
                     <connections>
                         <outlet property="emptyView" destination="hDm-zU-DYv" id="NSY-YU-DgY"/>
                         <outlet property="errorLabel" destination="hFn-1m-JcD" id="EdY-0e-Iak"/>

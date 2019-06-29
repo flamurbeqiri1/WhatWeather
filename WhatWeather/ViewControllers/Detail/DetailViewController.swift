@@ -40,6 +40,7 @@ class DetailViewController: UIViewController, HasDependencies {
     }
 
     fileprivate func updateUI() {
+        self.navigationItem.title = currentWeather.name
         self.windLabel.text = "\(currentWeather.wind.speed)"
         self.temperatureLabel.text = "\(currentWeather.main.temp)"
         self.backgroundImageView.image = currentWeather.main.temp > 11.0 ? UIImage(named: "Sunny") : UIImage(named: "Rainy")
@@ -50,13 +51,28 @@ class DetailViewController: UIViewController, HasDependencies {
             case .success(let image):
                 self.weatherImageView.image = image
             case .failure(let error):
-                print(error) // TODO handle error
+                self.showAlert(title: "Error", message: error.localizedDescription)
             }
         }
     }
 
     @IBAction func shareButtonAction(_ sender: Any) {
         let content = "Weather in \(currentWeather.name) is \(currentWeather.main.temp)°C"
+        showActivity(with: content)
+    }
+}
+
+// MARK: - Helpers
+
+extension DetailViewController {
+
+    func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func showActivity(with content: String) {
         let activityVC = UIActivityViewController(
             activityItems: [content, self.weatherImageView.image!],
             applicationActivities: [])
