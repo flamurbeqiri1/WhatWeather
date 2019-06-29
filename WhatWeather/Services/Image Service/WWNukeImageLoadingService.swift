@@ -39,19 +39,4 @@ class WWNukeImageLoadingService: ImageLoadingService {
             completion(Result.success(response.image))
         }
     }
-
-    func load(url: URL, into imageView: UIImageView, placeholder: UIImage?, completion: @escaping (Result<Void>) -> Void) {
-        let options = ImageLoadingOptions(placeholder: placeholder, transition: .fadeIn(duration: 0.33))
-
-        Nuke.loadImage(with: url, options: options, into: imageView) { (_, error) in
-            if let error = error {
-                #if DEBUG
-                print("DEBUG: Nuke Error: \(error.debugDescription)")
-                #endif
-                completion(Result.failure(ImageLoadingServiceError.dataLoadingFailed(url)))
-                return
-            }
-            completion(Result.success(()))
-        }
-    }
 }

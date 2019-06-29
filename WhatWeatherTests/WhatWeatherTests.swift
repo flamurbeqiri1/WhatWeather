@@ -9,10 +9,14 @@
 import XCTest
 @testable import WhatWeather
 
-class WhatWeatherTests: XCTestCase {
+class WhatWeatherTests: XCTestCase, HasDependencies {
+    
+    private lazy var weatherService: WeatherService = dependencies.weatherService()
+    private lazy var imageLoadingService: ImageLoadingService = dependencies.imageLoadingService()
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        DependencyInjector.dependencies = CoreDependency()
     }
 
     override func tearDown() {
@@ -30,5 +34,50 @@ class WhatWeatherTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    // MARK: - Weather Service
+    
+    func testListSeveralCities() {
+        let payloadExpectation = self.expectation(description: "Payload")
+        self.weatherService.listSeveralCities { (result) in
+            switch result {
+            case .success(let returnedObject):
+                XCTAssertNotNil(returnedObject)
+                payloadExpectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testGetImage() {
+        let location = Location(main: Main(temp: 27.73, tempMin: 26.0, tempMax: 30.0, pressure: 1022, humidity: 39),
+                                        sys: Sys(country: "DE"),
+                                        wind: Wind(speed: 2.1, deg: 330),
+                                        timeOfData: 1561730849,
+                                        cityId: 2867714,
+                                        name: "Muenchen",
+                                        weather: [Weather(id: 500, weatherDescription: "light rain", icon: "10d")])
+        
+        let payloadExpectation = self.expectation(description: "Payload")
+        guard let iconCode = location.weather.first?.icon else {
+            XCTAssertFalse(false, "weather icon nil")
+            return
+        }
+        let url = URL(string: "http://openweathermap.org/img/wn/\(iconCode)@2x.png")!
+        self.imageLoadingService.loadImage(from: url) { (result) in
+            switch result {
+            case .success(let image):
+                XCTAssertNotNil(image)
+                payloadExpectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        waitForExpectations(timeout: 10, handler: nil)
+    }
+    
+    // MARK: - Backend Service
 
 }

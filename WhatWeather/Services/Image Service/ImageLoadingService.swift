@@ -10,7 +10,6 @@ import UIKit
 
 public protocol ImageLoadingService {
     func loadImage(from url: URL, completion: @escaping (Result<UIImage>) -> Void)
-    func load(url: URL, into imageView: UIImageView, placeholder: UIImage?, completion: @escaping (Result<Void>) -> Void)
 }
 
 public enum ImageLoadingServiceError {

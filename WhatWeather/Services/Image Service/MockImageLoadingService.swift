@@ -36,20 +36,6 @@ class MockImageLoadingService: ImageLoadingService {
             }
         }
     }
-
-    func load(url: URL, into imageView: UIImageView, placeholder: UIImage?, completion: @escaping (Result<Void>) -> Void) {
-        imageView.image = placeholder
-        self.loadImage(from: url) { result in
-            switch result {
-            case .failure(let error):
-                completion(Result.failure(error))
-            case .success(let image):
-                imageView.image = image
-                print("Load url into: \(imageView) performed)")
-                completion(Result.success(()))
-            }
-        }
-    }
 }
 
 enum MockImageLoadingServiceError: String {
