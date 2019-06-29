@@ -35,7 +35,7 @@ class WhatWeatherTests: XCTestCase, HasDependencies {
         }
     }
     
-    // MARK: - Weather Service
+    // MARK: - Tests
     
     func testListSeveralCities() {
         let payloadExpectation = self.expectation(description: "Payload")
@@ -77,7 +77,5 @@ class WhatWeatherTests: XCTestCase, HasDependencies {
         }
         waitForExpectations(timeout: 10, handler: nil)
     }
-    
-    // MARK: - Backend Service
 
 }
