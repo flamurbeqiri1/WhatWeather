@@ -56,10 +56,15 @@ class DetailViewController: UIViewController, HasDependencies {
     }
 
     @IBAction func shareButtonAction(_ sender: Any) {
-        // TODO: - a better content to share
-        let shareAlert = UIActivityViewController(
-            activityItems: [self.windLabel.text!, self.weatherImageView.image!],
+        let content = "Weather in \(currentWeather.name) is \(currentWeather.main.temp)°C"
+        let activityVC = UIActivityViewController(
+            activityItems: [content, self.weatherImageView.image!],
             applicationActivities: [])
-        present(shareAlert, animated: true)
+        if let popoverController = activityVC.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2, width: 0, height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
+        present(activityVC, animated: true)
     }
 }
