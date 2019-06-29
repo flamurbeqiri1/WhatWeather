@@ -270,7 +270,7 @@
                         <viewLayoutGuide key="safeArea" id="Exc-7n-sge"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="YCL-3j-tYj">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="A2q-de-LdD">
+                        <barButtonItem key="rightBarButtonItem" id="A2q-de-LdD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7RH-tv-d1s">
                                 <rect key="frame" x="324" y="6" width="70" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
